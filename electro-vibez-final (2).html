@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electro Vibez 2026 - SSM College Technical Symposium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-pink: #ff00ff;
+            --neon-yellow: #ffff00;
+            --electric-blue: #0080ff;
+            --deep-purple: #0a0015;
+            --dark-purple: #1a0033;
+            --grid-color: rgba(0, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, #1a0033 0%, #0d001a 20%, #1a0852 40%, #2d1b69 60%, #1a0852 80%, #0d001a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Lightning effects */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(0, 255, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; }
+            33% { opacity: 0.9; }
+            66% { opacity: 0.7; }
+        }
+
+        @keyframes electricArc {
+            0%, 100% { opacity: 0; }
+            10%, 12% { opacity: 1; }
+            11% { opacity: 0.3; }
+            50%, 52% { opacity: 0.8; }
+            51% { opacity: 0.2; }
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating Geometric Shapes */
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--neon-cyan);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            transform: rotate(45deg);
+        }
+
+        .shape:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--neon-pink);
+            top: 60%;
+            right: 15%;
+            animation-delay: -5s;
+            border-radius: 50%;
+        }
+
+        .shape:nth-child(3) {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 80px solid var(--electric-blue);
+            top: 40%;
+            left: 80%;
+            animation-delay: -10s;
+            opacity: 0.1;
+        }
+
+        /* Lightning bolt decorations */
+        .lightning {
+            position: absolute;
+            width: 3px;
+            height: 150px;
+            background: linear-gradient(180deg, transparent, var(--neon-cyan), transparent);
+            opacity: 0.6;
+            animation: lightning 4s ease-in-out infinite;
+        }
+
+        .lightning:nth-child(4) {
+            left: 15%;
+            top: 20%;
+            transform: rotate(15deg);
+            animation-delay: 0s;
+        }
+
+        .lightning:nth-child(5) {
+            right: 20%;
+            top: 50%;
+            transform: rotate(-20deg);
+            animation-delay: 2s;
+        }
+
+        @keyframes lightning {
+            0%, 89%, 100% { opacity: 0; }
+            90%, 92%, 94% { opacity: 1; }
+            91%, 93% { opacity: 0.1; }
+            95% { opacity: 0.6; transform: translateY(-15px) scaleY(1.2); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 0, 21, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px 15px;
+        }
+
+        /* Header */
+        header {
+            padding: 140px 0 40px;
+            position: relative;
+        }
+
+        .college-name {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+            text-align: center;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            animation: glitch 3s infinite;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { text-shadow: none; }
+            92% { text-shadow: 2px 2px var(--neon-cyan), -2px -2px var(--neon-pink); }
+            94% { text-shadow: -2px 2px var(--neon-pink), 2px -2px var(--neon-cyan); }
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 18px;
+            color: var(--neon-cyan);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .event-date {
+            text-align: center;
+            font-size: 20px;
+            color: var(--neon-yellow);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            font-weight: 600;
+        }
+
+        .theme {
+            text-align: center;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .prize-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .prize-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .prize-label {
+            font-size: 24px;
+            color: var(--neon-yellow);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 40px auto;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            z-index: 0;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-cyan);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--deep-purple);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button.secondary {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+        }
+
+        .cta-button.secondary::before {
+            background: var(--neon-pink);
+        }
+
+        .cta-button.secondary:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .event-category {
+            background: rgba(26, 0, 51, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 40px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .event-category:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .category-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: var(--neon-pink);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .technical {
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+
+        .non-technical {
+            border-color: rgba(255, 0, 255, 0.3);
+        }
+
+        .event-list {
+            list-style: none;
+        }
+
+        .event-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .event-list li strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 17px;
+        }
+
+        /* Expandable event details */
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .event-toggle {
+            color: var(--neon-cyan);
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .event-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .event-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-top: 0;
+        }
+
+        .event-details.active {
+            max-height: 600px;
+            margin-top: 15px;
+            overflow-y: auto;
+        }
+
+        /* Custom scrollbar for event details */
+        .event-details::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .event-details::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+        }
+
+        .event-details::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 3px;
+        }
+
+        .event-details::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-pink);
+        }
+
+        .event-rules {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--neon-cyan);
+            padding: 15px 20px;
+            margin-top: 10px;
+        }
+
+        .event-rules h4 {
+            color: var(--neon-pink);
+            font-size: 15px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .event-rules ol {
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .event-rules li {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            line-height: 1.8;
+            padding: 5px 0;
+            border-bottom: none;
+            padding-left: 0;
+        }
+
+        .event-rules li::before {
+            content: none;
+        }
+
+        .event-list li:last-child {
+            border-bottom: none;
+        }
+
+        .event-list li::before {
+            content: '';
+        }
+
+        .event-list li:hover {
+            color: var(--neon-cyan);
+            padding-left: 30px;
+        }
+
+        /* Registration Section */
+        .registration-section {
+            padding: 100px 0;
+            background: rgba(26, 0, 51, 0.3);
+        }
+
+        .registration-info {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .fees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 40px auto 60px;
+        }
+
+        .fee-card {
+            background: rgba(26, 0, 51, 0.8);
+            border: 2px solid var(--neon-cyan);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .fee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+        }
+
+        .fee-type {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .fee-amount {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--neon-pink);
+        }
+
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(26, 0, 51, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--neon-cyan);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-cyan);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .submit-btn:hover {
+            color: var(--deep-purple);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+        }
+
+        .submit-btn:hover::before {
+            left: 0;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid var(--neon-cyan);
+            padding: 20px;
+            text-align: center;
+            color: var(--neon-cyan);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+        }
+
+        .coordinators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .coordinator-group {
+            background: rgba(26, 0, 51, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .coordinator-group:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .coordinator-type {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: var(--neon-pink);
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .coordinator {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .coordinator:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .coordinator-name {
+            color: var(--neon-cyan);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .coordinator-role {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .coordinator-phone {
+            color: var(--neon-yellow);
+            font-size: 14px;
+        }
+
+        .coordinator-phone a {
+            color: var(--neon-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .coordinator-phone a:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            margin-top: 80px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border: 1px solid transparent;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 0, 21, 0.98);
+                flex-direction: column;
+                padding: 30px 40px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 50px;
+                letter-spacing: 4px;
+            }
+
+            .prize-amount {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .events-grid,
+            .coordinators-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .registration-form {
+                padding: 30px 25px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Glowing cursor effect */
+        @media (hover: hover) {
+            body {
+                cursor: none;
+            }
+
+            .cursor {
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                border: 2px solid var(--neon-cyan);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s ease;
+                box-shadow: 0 0 15px var(--neon-cyan);
+            }
+        }
+
+        /* ── Intro Overlay ─────────────────────────────────────────── */
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #intro-overlay.fade-out {
+            animation: introFadeOut 0.9s ease forwards;
+        }
+        @keyframes introFadeOut {
+            to { opacity: 0; pointer-events: none; }
+        }
+        #arc-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #intro-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,255,255,0.015) 2px,
+                rgba(0,255,255,0.015) 4px
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+        #intro-letters {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .intro-word {
+            display: flex;
+            gap: 4px;
+        }
+        .intro-letter {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(42px, 9vw, 108px);
+            color: transparent;
+            opacity: 0;
+            display: inline-block;
+            will-change: transform, opacity, color;
+        }
+        .intro-letter.flash {
+            animation: letterFlash 0.6s ease forwards;
+        }
+        @keyframes letterFlash {
+            0%   { opacity:0; color:transparent; transform:scale(2.2) translateY(-18px); text-shadow:none; }
+            18%  { opacity:1; color:var(--flash-col); transform:scale(1.45) translateY(-5px);
+                   text-shadow:0 0 40px var(--flash-col),0 0 90px var(--flash-col),0 0 140px var(--flash-col); }
+            45%  { opacity:1; color:var(--flash-col); transform:scale(1.05) translateY(0);
+                   text-shadow:0 0 18px var(--flash-col),0 0 50px var(--flash-col); }
+            72%  { opacity:1; color:#fff; transform:scale(1); text-shadow:0 0 12px rgba(255,255,255,0.55); }
+            100% { opacity:1; color:#fff; transform:scale(1); text-shadow:0 0 5px rgba(255,255,255,0.25); }
+        }
+        #intro-tagline {
+            position: absolute;
+            bottom: 17%;
+            left: 0; right: 0;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(10px, 1.6vw, 16px);
+            color: var(--neon-cyan);
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            opacity: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════
+         OPENING INTRO OVERLAY
+    ═══════════════════════════════════════════════════════ -->
+    <div id="intro-overlay">
+        <canvas id="arc-canvas"></canvas>
+
+        <div id="intro-letters">
+            <div class="intro-word" id="word-electro"></div>
+            <div class="intro-word" id="word-vibez"></div>
+        </div>
+
+        <div id="intro-tagline">Department of Electrical &amp; Electronics Engineering</div>
+    </div>
+
+    <script>
+    (function(){
+        /* ── config ─────────────────────────────────── */
+        const ELECTRO = ['E','L','E','C','T','R','O'];
+        const VIBEZ   = ['V','I','B','E','Z'];
+        const COLORS  = ['#00ffff','#ff00ff','#ffff00','#0080ff','#ff4488','#00ffaa'];
+        const LETTER_INTERVAL = 110;   // ms between each letter reveal
+        const TAGLINE_DELAY   = 200;   // ms after last letter before tagline appears
+        const HOLD_DURATION   = 1000;  // ms to hold before fade-out
+        const ARCS_ACTIVE_MS  = 3200;  // how long arcs fire (covers letter reveal)
+
+        /* ── build letter elements ───────────────────── */
+        function buildWord(containerId, letters) {
+            const wrap = document.getElementById(containerId);
+            return letters.map((ch, i) => {
+                const span = document.createElement('span');
+                span.className = 'intro-letter';
+                span.textContent = ch;
+                const col = COLORS[Math.floor(Math.random() * COLORS.length)];
+                span.style.setProperty('--flash-col', col);
+                wrap.appendChild(span);
+                return span;
+            });
+        }
+
+        const electroEls = buildWord('word-electro', ELECTRO);
+        const vibezEls   = buildWord('word-vibez',   VIBEZ);
+        const allLetters = [...electroEls, ...vibezEls];
+        const tagline    = document.getElementById('intro-tagline');
+        const overlay    = document.getElementById('intro-overlay');
+
+        /* ── lightning arc canvas ────────────────────── */
+        const canvas = document.getElementById('arc-canvas');
+        const ctx    = canvas.getContext('2d');
+        let W, H;
+
+        function resize() {
+            W = canvas.width  = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        /* jagged lightning bolt between two points */
+        function drawBolt(x1,y1,x2,y2,color,roughness,width){
+            const segs = 10 + Math.floor(Math.random()*8);
+            const pts = [{x:x1,y:y1}];
+            for(let i=1;i<segs;i++){
+                const t = i/segs;
+                pts.push({
+                    x: x1+(x2-x1)*t + (Math.random()-0.5)*roughness,
+                    y: y1+(y2-y1)*t + (Math.random()-0.5)*roughness
+                });
+            }
+            pts.push({x:x2,y:y2});
+            ctx.save();
+            ctx.strokeStyle = color;
+            ctx.lineWidth   = width;
+            ctx.shadowColor = color;
+            ctx.shadowBlur  = 18;
+            ctx.globalAlpha = 0.7 + Math.random()*0.3;
+            ctx.beginPath();
+            ctx.moveTo(pts[0].x, pts[0].y);
+            pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+            ctx.stroke();
+            /* bright core */
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth   = width * 0.35;
+            ctx.shadowBlur  = 6;
+            ctx.globalAlpha = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(pts[0].x, pts[0].y);
+            pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        /* edge → center arcs */
+        const EDGE_ORIGINS = [
+            ()=>({x:0, y:Math.random()*H}),                     // left
+            ()=>({x:W, y:Math.random()*H}),                     // right
+            ()=>({x:Math.random()*W, y:0}),                     // top
+            ()=>({x:Math.random()*W, y:H}),                     // bottom
+            ()=>({x:0, y:0}),                                    // TL corner
+            ()=>({x:W, y:0}),                                    // TR corner
+            ()=>({x:0, y:H}),                                    // BL corner
+            ()=>({x:W, y:H}),                                    // BR corner
+        ];
+
+        let arcsRunning = true;
+        const arcIntervals = [];
+
+        function fireArc(){
+            if(!arcsRunning) return;
+            const origin = EDGE_ORIGINS[Math.floor(Math.random()*EDGE_ORIGINS.length)]();
+            /* target: center zone with some scatter */
+            const tx = W/2 + (Math.random()-0.5)*W*0.25;
+            const ty = H/2 + (Math.random()-0.5)*H*0.25;
+            const col = COLORS[Math.floor(Math.random()*COLORS.length)];
+            const roughness = 60 + Math.random()*80;
+            const width = 1 + Math.random()*2.5;
+
+            drawBolt(origin.x, origin.y, tx, ty, col, roughness, width);
+
+            /* branch arc occasionally */
+            if(Math.random() > 0.55){
+                const bx = tx + (Math.random()-0.5)*200;
+                const by = ty + (Math.random()-0.5)*200;
+                drawBolt(tx,ty,bx,by,col,30,width*0.5);
+            }
+
+            /* auto-fade the flash */
+            setTimeout(()=>{
+                ctx.clearRect(0,0,W,H);
+            }, 60 + Math.random()*80);
+        }
+
+        /* rapid bursts at start, then sparse */
+        for(let i=0;i<6;i++) setTimeout(fireArc, i*60);
+        const dense = setInterval(fireArc, 120);
+        arcIntervals.push(dense);
+
+        setTimeout(()=>{
+            clearInterval(dense);
+            const sparse = setInterval(fireArc, 340);
+            arcIntervals.push(sparse);
+            setTimeout(()=>{
+                clearInterval(sparse);
+                arcsRunning = false;
+                ctx.clearRect(0,0,W,H);
+            }, ARCS_ACTIVE_MS - 800);
+        }, 800);
+
+        /* ── sequential letter reveal ────────────────── */
+        let letterIdx = 0;
+        function revealNext(){
+            if(letterIdx >= allLetters.length){
+                /* all letters shown — show tagline then fade overlay */
+                setTimeout(()=>{
+                    tagline.style.transition = 'opacity 0.7s ease';
+                    tagline.style.opacity = '1';
+                }, TAGLINE_DELAY);
+                setTimeout(dismissIntro, TAGLINE_DELAY + HOLD_DURATION);
+                return;
+            }
+            const el = allLetters[letterIdx];
+            /* re-randomise flash color each letter for variety */
+            el.style.setProperty('--flash-col', COLORS[Math.floor(Math.random()*COLORS.length)]);
+            el.classList.add('flash');
+            letterIdx++;
+            setTimeout(revealNext, LETTER_INTERVAL);
+        }
+
+        /* slight startup delay so arcs fire first */
+        setTimeout(revealNext, 350);
+
+        /* ── dismiss ─────────────────────────────────── */
+        function dismissIntro(){
+            arcIntervals.forEach(id => clearInterval(id));
+            arcsRunning = false;
+            overlay.classList.add('fade-out');
+            setTimeout(()=>{ overlay.style.display='none'; }, 900);
+        }
+
+    })();
+    </script>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="lightning"></div>
+        <div class="lightning"></div>
+    </div>
+
+
+    <!-- Circuit Board Decorative Background SVG -->
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0.22;">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="circuit" x="0" y="0" width="240" height="240" patternUnits="userSpaceOnUse">
+
+                    <!-- LAYER 1: All traces drawn first (bottom layer) -->
+
+                    <!-- Main horizontal traces -->
+                    <line x1="0" y1="60" x2="240" y2="60" stroke="#00ffff" stroke-width="1.5"/>
+                    <!-- Main vertical traces -->
+                    <line x1="90" y1="0" x2="90" y2="110" stroke="#00ffff" stroke-width="1.5"/>
+                    <line x1="150" y1="60" x2="150" y2="140" stroke="#ff00ff" stroke-width="1.2"/>
+                    <!-- Secondary horizontal traces -->
+                    <line x1="0" y1="130" x2="240" y2="130" stroke="#0080ff" stroke-width="1.2"/>
+                    <!-- Secondary vertical traces -->
+                    <line x1="70" y1="130" x2="70" y2="240" stroke="#0080ff" stroke-width="1.2"/>
+                    <line x1="190" y1="130" x2="190" y2="240" stroke="#ffff00" stroke-width="1"/>
+                    <!-- Tertiary horizontal traces -->
+                    <line x1="70" y1="190" x2="240" y2="190" stroke="#ffff00" stroke-width="1"/>
+                    <!-- Short stub traces -->
+                    <line x1="90" y1="100" x2="50" y2="100" stroke="#ff00ff" stroke-width="1"/>
+                    <line x1="200" y1="60" x2="200" y2="100" stroke="#00ffff" stroke-width="1"/>
+                    <!-- IC chip pin traces -->
+                    <line x1="100" y1="58" x2="90" y2="58" stroke="#00ffff" stroke-width="1"/>
+                    <line x1="100" y1="65" x2="90" y2="65" stroke="#00ffff" stroke-width="1"/>
+                    <line x1="100" y1="72" x2="90" y2="72" stroke="#00ffff" stroke-width="1"/>
+                    <line x1="140" y1="58" x2="150" y2="58" stroke="#00ffff" stroke-width="1"/>
+                    <line x1="140" y1="65" x2="150" y2="65" stroke="#00ffff" stroke-width="1"/>
+                    <!-- Capacitor lead traces -->
+                    <line x1="200" y1="100" x2="200" y2="107" stroke="#00ffff" stroke-width="1.5"/>
+                    <line x1="200" y1="113" x2="200" y2="130" stroke="#00ffff" stroke-width="1.5"/>
+                    <!-- Resistor trace connections -->
+                    <line x1="0" y1="190" x2="10" y2="190" stroke="#ff00ff" stroke-width="1.2"/>
+                    <line x1="43" y1="190" x2="70" y2="190" stroke="#ff00ff" stroke-width="1.2"/>
+                    <!-- Lightning bolt trace -->
+                    <line x1="168" y1="0" x2="168" y2="10" stroke="#ffff00" stroke-width="1"/>
+                    <line x1="158" y1="46" x2="158" y2="60" stroke="#ffff00" stroke-width="1"/>
+
+                    <!-- LAYER 2: Components drawn on top of traces -->
+
+                    <!-- IC Chip body (filled background to cover traces underneath) -->
+                    <rect x="100" y="50" width="40" height="30" fill="#0a0015" stroke="#00ffff" stroke-width="1.2" opacity="0.95"/>
+
+                    <!-- Capacitor body (filled to cover traces) -->
+                    <rect x="193" y="107" width="14" height="6" fill="#0a0015"/>
+                    <line x1="196" y1="107" x2="204" y2="107" stroke="#00ffff" stroke-width="2.5"/>
+                    <line x1="196" y1="113" x2="204" y2="113" stroke="#00ffff" stroke-width="2.5"/>
+
+                    <!-- Resistor body (filled rectangle over zigzag area) -->
+                    <rect x="10" y="185" width="33" height="10" fill="#0a0015" rx="2"/>
+                    <polyline points="10,190 15,183 20,197 25,183 30,197 33,190" fill="none" stroke="#ff00ff" stroke-width="1.2"/>
+
+                    <!-- Lightning bolt (filled, drawn over traces) -->
+                    <polygon points="168,10 160,28 168,28 158,46 172,24 163,24 172,10" fill="#ffff00" opacity="0.6"/>
+
+                    <!-- LAYER 3: Solder pads drawn last (top layer, always visible) -->
+
+                    <!-- Pad at main trace intersections -->
+                    <circle cx="90" cy="60" r="6" fill="#0a0015" stroke="#00ffff" stroke-width="1.8"/>
+                    <circle cx="90" cy="60" r="2.5" fill="#00ffff"/>
+
+                    <circle cx="150" cy="130" r="6" fill="#0a0015" stroke="#ff00ff" stroke-width="1.8"/>
+                    <circle cx="150" cy="130" r="2.5" fill="#ff00ff"/>
+
+                    <circle cx="70" cy="190" r="6" fill="#0a0015" stroke="#ffff00" stroke-width="1.8"/>
+                    <circle cx="70" cy="190" r="2.5" fill="#ffff00"/>
+
+                    <circle cx="190" cy="190" r="5" fill="#0a0015" stroke="#0080ff" stroke-width="1.5"/>
+                    <circle cx="190" cy="190" r="2" fill="#0080ff"/>
+
+                    <circle cx="50" cy="100" r="4" fill="#0a0015" stroke="#ff00ff" stroke-width="1.2"/>
+                    <circle cx="50" cy="100" r="1.5" fill="#ff00ff"/>
+
+                    <circle cx="200" cy="60" r="4" fill="#0a0015" stroke="#00ffff" stroke-width="1.2"/>
+                    <circle cx="200" cy="60" r="1.5" fill="#00ffff"/>
+
+                    <circle cx="90" cy="130" r="5" fill="#0a0015" stroke="#0080ff" stroke-width="1.5"/>
+                    <circle cx="90" cy="130" r="2" fill="#0080ff"/>
+
+                    <circle cx="70" cy="130" r="5" fill="#0a0015" stroke="#0080ff" stroke-width="1.5"/>
+                    <circle cx="70" cy="130" r="2" fill="#0080ff"/>
+
+                    <circle cx="150" cy="60" r="5" fill="#0a0015" stroke="#00ffff" stroke-width="1.5"/>
+                    <circle cx="150" cy="60" r="2" fill="#00ffff"/>
+
+                    <circle cx="190" cy="130" r="5" fill="#0a0015" stroke="#ffff00" stroke-width="1.5"/>
+                    <circle cx="190" cy="130" r="2" fill="#ffff00"/>
+
+                </pattern>
+
+                <!-- Animated pulse along traces -->
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                    <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#circuit)"/>
+        </svg>
+    </div>
+
+    <!-- Animated electrical pulse dots -->
+    <canvas id="electricCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0.35;"></canvas>
+    <script>
+    (function() {
+        const canvas = document.getElementById('electricCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+        const pulses = [];
+        const colors = ['#00ffff', '#ff00ff', '#ffff00', '#0080ff'];
+        const paths = [
+            [{x:0,y:0.25},{x:0.375,y:0.25},{x:0.375,y:0.42},{x:0.625,y:0.42},{x:0.625,y:0.54},{x:1,y:0.54}],
+            [{x:0,y:0.54},{x:0.29,y:0.54},{x:0.29,y:0.79},{x:1,y:0.79}],
+            [{x:0.625,y:0},{x:0.625,y:0.25},{x:1,y:0.25}],
+        ];
+
+        function createPulse() {
+            const path = paths[Math.floor(Math.random() * paths.length)];
+            pulses.push({ path, t: 0, speed: 0.002 + Math.random() * 0.003, color: colors[Math.floor(Math.random() * colors.length)], size: 3 + Math.random() * 3 });
+        }
+
+        for (let i = 0; i < 6; i++) setTimeout(createPulse, i * 600);
+
+        function lerp(a, b, t) { return a + (b - a) * t; }
+        function getPoint(path, t) {
+            const total = path.length - 1;
+            const seg = Math.min(Math.floor(t * total), total - 1);
+            const st = (t * total) - seg;
+            return { x: lerp(path[seg].x, path[seg+1].x, st), y: lerp(path[seg].y, path[seg+1].y, st) };
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = pulses.length - 1; i >= 0; i--) {
+                const p = pulses[i];
+                p.t += p.speed;
+                if (p.t > 1) { pulses.splice(i, 1); createPulse(); continue; }
+                const pt = getPoint(p.path, p.t);
+                const x = pt.x * canvas.width, y = pt.y * canvas.height;
+                ctx.beginPath();
+                ctx.arc(x, y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.shadowColor = p.color;
+                ctx.shadowBlur = 12;
+                ctx.fill();
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    })();
+    </script>
+
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">ELECTRO VIBEZ</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header id="home">
+            <p class="college-name">SSM Institute of Engineering and Technology</p>
+            <h1 class="logo">ELECTRO VIBEZ</h1>
+            <p class="tagline">Department of Electrical & Electronics Engineering</p>
+            <p class="event-date">27 MARCH 2026</p>
+            <p class="theme">THEME: ELECTRICAL SYSTEMS & SMART TECHNOLOGY</p>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="prize-section">
+                <div class="prize-amount">30K</div>
+                <div class="prize-label">Cash Prize</div>
+            </div>
+            
+            <p class="hero-description">
+                Join us for an electrifying technical symposium featuring cutting-edge competitions, workshops, and events. 
+                Showcase your skills, compete with the best, and be part of the future of electrical engineering!
+            </p>
+            
+            <!-- Countdown Timer -->
+            <div style="margin: 50px auto; max-width: 800px;">
+                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 24px; color: var(--neon-pink); text-align: center; margin-bottom: 30px; letter-spacing: 2px;">
+                    EVENT COUNTDOWN
+                </h3>
+                <div id="countdown" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <div style="background: rgba(0, 255, 255, 0.1); border: 2px solid var(--neon-cyan); padding: 20px 30px; border-radius: 10px; min-width: 120px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);">
+                        <div id="days" style="font-family: 'Orbitron', sans-serif; font-size: 48px; font-weight: 900; color: var(--neon-cyan); text-align: center; line-height: 1;">00</div>
+                        <div style="font-size: 14px; color: rgba(255, 255, 255, 0.7); text-align: center; margin-top: 10px; letter-spacing: 2px;">DAYS</div>
+                    </div>
+                    <div style="background: rgba(255, 0, 255, 0.1); border: 2px solid var(--neon-pink); padding: 20px 30px; border-radius: 10px; min-width: 120px; box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);">
+                        <div id="hours" style="font-family: 'Orbitron', sans-serif; font-size: 48px; font-weight: 900; color: var(--neon-pink); text-align: center; line-height: 1;">00</div>
+                        <div style="font-size: 14px; color: rgba(255, 255, 255, 0.7); text-align: center; margin-top: 10px; letter-spacing: 2px;">HOURS</div>
+                    </div>
+                    <div style="background: rgba(255, 255, 0, 0.1); border: 2px solid var(--neon-yellow); padding: 20px 30px; border-radius: 10px; min-width: 120px; box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);">
+                        <div id="minutes" style="font-family: 'Orbitron', sans-serif; font-size: 48px; font-weight: 900; color: var(--neon-yellow); text-align: center; line-height: 1;">00</div>
+                        <div style="font-size: 14px; color: rgba(255, 255, 255, 0.7); text-align: center; margin-top: 10px; letter-spacing: 2px;">MINUTES</div>
+                    </div>
+                    <div style="background: rgba(0, 128, 255, 0.1); border: 2px solid var(--electric-blue); padding: 20px 30px; border-radius: 10px; min-width: 120px; box-shadow: 0 0 20px rgba(0, 128, 255, 0.3);">
+                        <div id="seconds" style="font-family: 'Orbitron', sans-serif; font-size: 48px; font-weight: 900; color: var(--electric-blue); text-align: center; line-height: 1;">00</div>
+                        <div style="font-size: 14px; color: rgba(255, 255, 255, 0.7); text-align: center; margin-top: 10px; letter-spacing: 2px;">SECONDS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#events" class="cta-button">View Events</a>
+                <a href="#contact" class="cta-button secondary">Contact Us</a>
+            </div>
+        </section>
+
+        <!-- Registration Call-to-Action -->
+        <section id="register" style="padding: 60px 0; text-align: center; background: rgba(26, 0, 51, 0.4); border-top: 2px solid rgba(0, 255, 255, 0.3); border-bottom: 2px solid rgba(0, 255, 255, 0.3);">
+            <div>
+                <h2 style="font-family: 'Orbitron', sans-serif; font-size: 36px; color: var(--neon-cyan); margin-bottom: 20px; animation: pulse 2s infinite;">
+                    🎯 REGISTER NOW
+                </h2>
+                <p style="font-size: 18px; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Secure your spot in Electro Vibez 2026! Fill out the registration form and be part of the biggest electrical engineering symposium.
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeGnno1CENEIfZbSmZ7OXhj0KKQNSbwE4FgcrBehoOjlZt95g/viewform" 
+                   target="_blank" 
+                   style="display: inline-block; padding: 20px 60px; background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue)); color: var(--deep-purple); text-decoration: none; font-weight: 700; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; border-radius: 5px; box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); transition: all 0.3s ease; font-family: 'Orbitron', sans-serif;">
+                    CLICK HERE TO REGISTER
+                </a>
+                <p style="margin-top: 18px; font-size: 15px; color: var(--neon-pink); letter-spacing: 2px; font-family: 'Orbitron', sans-serif;">
+                    ⚠️ REGISTRATION LAST CHANCE — MAR 24
+                </p>
+                <div style="margin-top: 30px; padding: 20px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 0, 255, 0.3); max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <p style="font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px;">
+                        <strong style="color: var(--neon-pink);">Registration Fees:</strong>
+                    </p>
+                    <p style="font-size: 16px; color: rgba(255, 255, 255, 0.9);">
+                        Online: <span style="color: var(--neon-yellow); font-size: 20px; font-weight: 700;">₹200</span> | 
+                        Offline: <span style="color: var(--neon-yellow); font-size: 20px; font-weight: 700;">₹250</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events-section" id="events">
+            <h2 class="section-title">Events</h2>
+            
+            <div class="events-grid">
+                <div class="event-category technical">
+                    <h3 class="category-title">Technical Events</h3>
+                    <ul class="event-list">
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>EnergyXhibit</strong> - Project Expo</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Project Domain:</p>
+                                        <p style="padding-left: 20px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+                                            Projects must be based on core Electrical and Electronics Engineering areas such as Power Systems, Renewable Energy, Power Electronics, Control Systems, Embedded Systems, EV Technology, etc.
+                                        </p>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Originality:</p>
+                                        <p style="padding-left: 20px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+                                            Projects must be original. Plagiarism will lead to disqualification.
+                                        </p>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Abstract:</p>
+                                        <p style="padding-left: 20px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+                                            Submit a 250–300 word abstract during registration.
+                                        </p>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Presentation:</p>
+                                        <ul style="list-style: none; padding-left: 20px;">
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• 8–10 minutes presentation</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• 3–5 minutes Q&A</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• PPT or working model allowed</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>TraceBot</strong> - Line Follower</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            No external helps allowed.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Bot should not be brought from outside.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Team size: 2 members.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Participants must restart from the previous checkpoint.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            If any problems occur, coordinators' decision will be final.
+                                        </li>
+                                    </ul>
+                                    
+                                    <h4 style="color: var(--neon-pink); margin-top: 25px; margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Instructions</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            There will be two rounds.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            In round one, there will be two trials and one final.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Five teams will be selected and proceed to round two.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            In round two, there will be a different map.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>Sparktalkz</strong> - Paper Presentation</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4>RULES</h4>
+                                    <ol>
+                                        <li>A team can have 1 to 3 members only.</li>
+                                        <li>5 minutes for presentation and 2 minutes for Q&A.</li>
+                                        <li>PPT must be strictly related to the given theme.</li>
+                                        <li>Any one sub-topic only should be selected.</li>
+                                        <li>PPT must be uploaded in the coordinator's system.</li>
+                                        <li>PPT should also be sent through email.</li>
+                                        <li>Pen drives are not allowed.</li>
+                                        <li>Participants must carry their College ID card.</li>
+                                        <li>Participants should be present at the venue on time.</li>
+                                        <li>Judges' decision will be final.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>WattBattle</strong> - Quiz</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4>EVENT FORMAT (3 ROUNDS)</h4>
+                                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px;">
+                                        <thead>
+                                            <tr style="background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.3);">
+                                                <th style="padding: 10px; text-align: left; border: 1px solid rgba(0, 255, 255, 0.3); color: var(--neon-cyan);">Event Format<br>(3 Rounds)</th>
+                                                <th style="padding: 10px; text-align: left; border: 1px solid rgba(0, 255, 255, 0.3); color: var(--neon-cyan);">Scoring</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="border: 1px solid rgba(255, 255, 255, 0.2);">
+                                                <td style="padding: 10px; border: 1px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.85);">
+                                                    <strong>Round 1- Concept Charge</strong><br>
+                                                    Direct technical questions<br>
+                                                    Core EEE fundamentals<br>
+                                                    Equal number of questions for each team
+                                                </td>
+                                                <td style="padding: 10px; border: 1px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.85);">
+                                                    Correct: +10<br>
+                                                    Pass: +5
+                                                </td>
+                                            </tr>
+                                            <tr style="border: 1px solid rgba(255, 255, 255, 0.2);">
+                                                <td style="padding: 10px; border: 1px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.85);">
+                                                    <strong>Round 2 — Visual Voltage</strong><br>
+                                                    Identify components, symbols, circuit diagrams, equipment<br>
+                                                    Questions displayed through PPT images
+                                                </td>
+                                                <td style="padding: 10px; border: 1px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.85);">
+                                                    Scoring: +10
+                                                </td>
+                                            </tr>
+                                            <tr style="border: 1px solid rgba(255, 255, 255, 0.2);">
+                                                <td style="padding: 10px; border: 1px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.85);">
+                                                    <strong>Round 3 — Buzzer Battle Finale</strong><br>
+                                                    Open buzzer round<br>
+                                                    Moderate to challenging questions<br>
+                                                    Final deciding round
+                                                </td>
+                                                <td style="padding: 10px; border: 1px solid rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.85);">
+                                                    Correct: +10<br>
+                                                    Wrong: -5
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>Spark Ideate</strong> - Idea Hackathon</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Each team should have 2–3 members only.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Participants must carry their college ID cards.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            A team can register only once.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            One member must be the Team Leader.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            All registered teams must report 15 minutes before the event starts.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Time duration: 7 minutes presentation, 3 minutes Q&A.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Any malpractice will lead to immediate disqualification.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Judges' decision will be final.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="event-category non-technical">
+                    <h3 class="category-title">Non-Technical Events</h3>
+                    <ul class="event-list">
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>ElexCinefest</strong> - Short Film</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Films should adhere to the symposium theme.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Maximum: 5–7 minutes (including opening & closing credits).
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Final film should be submitted in digital format (e.g., MP4 preferred).
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Minimum resolution should be 1080p (FHD) or above.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Include all opening and end credits (cast/crew names).
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Submit the film via a download link (Google Drive).
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            <strong style="color: var(--neon-yellow);">Online evaluation only.</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>Trash to Tech</strong> - Art from Waste</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Participants must carry their college ID card.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            A team can register only once.
+                                        </li>
+
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Late submission will not be evaluated.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Individual or team participation allowed per team (2 or 3 members).
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Electrical components if used must be low voltage and safer.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            <strong style="color: var(--neon-yellow);">Display only.</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>ElectroWeb</strong> - Photography</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Photography Contest Rules</h4>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Theme: Campus Life</p>
+                                        <p style="padding-left: 20px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+                                            Participants must capture photographs that represent daily life, culture, emotions, activities, friendships, learning environment, and memorable moments inside the college campus.
+                                        </p>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Eligibility:</p>
+                                        <ul style="list-style: none; padding-left: 20px;">
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Open to all registered symposium participants</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Individual participation only</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Equipment Allowed:</p>
+                                        <ul style="list-style: none; padding-left: 20px;">
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Mobile phones or DSLR/Mirrorless cameras</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• No drones or external flash</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Time Limit:</p>
+                                        <p style="padding-left: 20px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+                                            Photos must be captured only during the event duration.
+                                        </p>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Photo Specifications:</p>
+                                        <ul style="list-style: none; padding-left: 20px;">
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Format: JPG / JPEG / PNG</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Minimum resolution: 1920 × 1080 pixels</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Maximum file size: 5 MB</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Editing Rules:</p>
+                                        <ul style="list-style: none; padding-left: 20px;">
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Basic adjustments only (brightness, contrast, crop, color correction)</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• No heavy manipulation or AI-generated images</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Submission Guidelines:</p>
+                                        <ul style="list-style: none; padding-left: 20px;">
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Maximum 2 photos per participant</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• File name format: Name_RollNo_Title.jpg</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Submit before deadline</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 20px;">
+                                        <p style="color: var(--neon-cyan); font-weight: 600; margin-bottom: 8px;">Prohibited Content:</p>
+                                        <ul style="list-style: none; padding-left: 20px;">
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• Offensive, political, violent, or inappropriate images</li>
+                                            <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">• No invasion of privacy</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>SnapSpark</strong> - Connections</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Each team shall consist of two to three members.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Participants must carry their college ID cards.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            A team can register only once.
+                                        </li>
+                                    </ul>
+                                    
+                                    <h4 style="color: var(--neon-pink); margin-top: 25px; margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Event Rounds</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            <strong style="color: var(--neon-yellow);">Round 1:</strong> Picture Connection Round
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            <strong style="color: var(--neon-yellow);">Round 2:</strong> Missing Lyrics Round
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            <strong style="color: var(--neon-yellow);">Round 3:</strong> English-to-Tamil Song Identification (Final Round)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>IPL Mock Auction</strong> - Strategy & Bidding Game</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    <p style="padding-left: 20px; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin-bottom: 15px;">
+                                        The event consists of two rounds, and teams must qualify in each round to advance to the next.
+                                    </p>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Any form of malpractice or use of mobile phones during the event will lead to disqualification.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Teams must maintain discipline throughout the event.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            In case of any dispute, the event coordinator's decision will be final.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="event-header" onclick="toggleEventDetails(this)">
+                                <span><strong>FusionFiesta</strong> - Fun Games & Esports</span>
+                                <span class="event-toggle">▼</span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-rules">
+                                    <h4 style="color: var(--neon-pink); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Rules</h4>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Open to all registered symposium participants.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Participants must carry their college ID cards.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Any malpractice will lead to immediate disqualification.
+                                        </li>
+                                        <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                                            <span style="position: absolute; left: 0; color: var(--neon-cyan);">•</span>
+                                            Coordinator's decision will be final.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="coordinators-grid">
+                <div class="coordinator-group">
+                    <h3 class="coordinator-type">Faculty Coordinators</h3>
+                    <div class="coordinator">
+                        <div class="coordinator-name">Mr. G. Satheesh Kumar</div>
+                        <div class="coordinator-role">AP/EEE</div>
+                    </div>
+                    <div class="coordinator">
+                        <div class="coordinator-name">Mr. N. Kalidasan</div>
+                        <div class="coordinator-role">AP/EEE</div>
+                    </div>
+                </div>
+
+                <div class="coordinator-group">
+                    <h3 class="coordinator-type">Student Coordinators</h3>
+                    <div class="coordinator">
+                        <div class="coordinator-name">Rogesh Balaji V</div>
+                    </div>
+                    <div class="coordinator">
+                        <div class="coordinator-name">Syed Hasan Sanjari</div>
+                    </div>
+                    <div class="coordinator">
+                        <div class="coordinator-name">Melciya S</div>
+                    </div>
+                    <div class="coordinator">
+                        <div class="coordinator-name">Sadhana G</div>
+                    </div>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 255, 255, 0.3);">
+                        <h4 style="font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--neon-pink); margin-bottom: 15px; text-align: center;">Contact Number</h4>
+                        <div style="text-align: center;">
+                            <div class="coordinator-phone"><a href="tel:+917530000825">75300 00825</a></div>
+                            <div class="coordinator-phone" style="margin-top: 8px;"><a href="tel:+916369452294">63694 52294</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="font-size: 18px; color: var(--neon-cyan); margin-bottom: 15px;">
+                    <strong>Venue:</strong> SSM Institute of Engineering and Technology
+                </p>
+                <p style="font-size: 16px; color: rgba(255, 255, 255, 0.8);">
+                    Dindigul - Palani Highway, Dindigul - 624 002
+                </p>
+                <div style="margin-top: 25px; margin-bottom: 40px;">
+                    <p style="font-size: 16px; color: var(--neon-pink); margin-bottom: 10px;">
+                        <strong>📍 College Location:</strong>
+                    </p>
+                    <a href="https://maps.app.goo.gl/F8Rd6oLSXqQRoUiDA" target="_blank" style="font-size: 15px; color: var(--neon-yellow); text-decoration: none; transition: all 0.3s ease; border-bottom: 1px solid var(--neon-yellow); padding-bottom: 2px;">
+                        🗺️ https://maps.app.goo.gl/F8Rd6oLSXqQRoUiDA
+                    </a>
+                </div>
+                <div style="margin-top: 40px; padding: 30px; background: rgba(26, 0, 51, 0.6); border: 1px solid rgba(0, 255, 255, 0.2); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <p style="font-size: 20px; color: var(--neon-pink); margin-bottom: 20px; font-weight: 600;">
+                        Registration Fees
+                    </p>
+                    <p style="font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px;">
+                        Online: <span style="color: var(--neon-yellow); font-size: 24px; font-weight: 700;">₹200</span>
+                    </p>
+                    <p style="font-size: 16px; color: rgba(255, 255, 255, 0.9);">
+                        Offline: <span style="color: var(--neon-yellow); font-size: 24px; font-weight: 700;">₹250</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">ELECTRO VIBEZ 2026 - Powered by Innovation</p>
+            <div class="social-links">
+                <a href="https://instagram.com/electro_vibez26" target="_blank">
+                    <svg style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; fill: currentColor;" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    @electro_vibez26
+                </a>
+                <a href="https://www.linkedin.com/company/elite-association-ssmiet/" target="_blank">
+                    <svg style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; fill: currentColor;" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    Elite Association SSMIET
+                </a>
+                <a href="mailto:eliteassociation2k26@gmail.com" target="_blank">
+                    <svg style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px; fill: currentColor;" viewBox="0 0 24 24">
+                        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.548l8.073-6.055C21.69 2.28 24 3.434 24 5.457z"/>
+                    </svg>
+                    eliteassociation2k26@gmail.com
+                </a>
+            </div>
+            <p class="footer-text" style="margin-top: 30px;">© 2026 SSM Institute of Engineering and Technology. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        
+        if (window.matchMedia("(hover: hover)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(1.5)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.event-category, .coordinator-group').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Toggle event details
+        function toggleEventDetails(element) {
+            const toggle = element.querySelector('.event-toggle');
+            const details = element.parentElement.querySelector('.event-details');
+            
+            toggle.classList.toggle('active');
+            if (details) details.classList.toggle('active');
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('March 27, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<p style="font-size: 24px; color: var(--neon-cyan); font-family: Orbitron, sans-serif;">EVENT HAS STARTED!</p>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
